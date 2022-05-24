@@ -2,21 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const productsSection = document.querySelector('#products');
 
-  for (let i = 0; i < data.products.length; ++i) {
-      const product = data.products[i];
+  for (const product of data.products) {
       const productUL = document.createElement('ul');
       productUL.classList.add('product');
 
       for (const property in product) {
-        const productProperty = document.createElement('li');
-        productProperty.textContent = product[property];
-        productUL.appendChild(productProperty);
-        // console.log(product[property]);
+        const propertyLI = document.createElement('li');
+        propertyLI.classList.add(`product-${property}`);
+        propertyLI.textContent = product[property];
+        productUL.appendChild(propertyLI);
       }
-      
-      // productName.classList.add('product-name');
+
       productsSection.appendChild(productUL);
-
-    }
-
+  }
 });
